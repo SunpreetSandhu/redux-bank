@@ -1,4 +1,5 @@
 import { createStore } from "redux";
+import AccountOperations from "./AccountOperations";
 
 const initialState = {
   balance: 0,
@@ -34,13 +35,37 @@ function reducer(state = initialState, action) {
 }
 const store = createStore(reducer);
 
-store.dispatch({ type: "account/deposit", payload: 1000 });
-store.dispatch({ type: "account/withdraw", payload: 1000 });
-store.dispatch({
-  type: "account/requestLoan",
-  payload: { amount: 1000, purpose: "Buy a house" },
-});
+// store.dispatch({ type: "account/deposit", payload: 1500 });
+// store.dispatch({ type: "account/withdraw", payload: 1000 });
+// store.dispatch({
+//   type: "account/requestLoan",
+//   payload: { amount: 1000, purpose: "Buy a house" },
+// });
 
-store.dispatch({ type: "account/payLoan" });
+// store.dispatch({ type: "account/payLoan" });
 
+// console.log(store.getState());
+
+function deposit(amount) {
+  return { type: "account/deposit", payload: amount };
+}
+function withdraw(amount) {
+  return { type: "account/withdraw", payload: amount };
+}
+function requestLoan(amount, purpose) {
+  return {
+    type: "account/requestLoan",
+    payload: { amount: amount, purpose: purpose },
+  };
+}
+function payLoan() {
+  return {
+    type: "account/payLoan",
+  };
+}
+
+store.dispatch(deposit(500));
+store.dispatch(withdraw(50));
+store.dispatch(requestLoan(2000, "house"));
+store.dispatch(payLoan());
 console.log(store.getState());
