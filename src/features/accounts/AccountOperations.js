@@ -21,7 +21,9 @@ function AccountOperations() {
   } = useSelector((store) => store.account); //this is how we know what reducer to use
   function handleDeposit() {
     if (!depositAmount) return;
-    dispatch(deposit(depositAmount, currency));
+    // dispatch(deposit(depositAmount, currency));
+    dispatch(deposit(depositAmount));
+
     setDepositAmount("");
     setCurrency("USD");
   }
