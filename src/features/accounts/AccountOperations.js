@@ -10,12 +10,15 @@ function AccountOperations() {
   const [currency, setCurrency] = useState("USD");
 
   const dispatch = useDispatch();
+  //all handler functions in here that get sent  to ./accountsSlice
+  //then comes back w obj to get sent to reducer (or function in case of async)
+  //we then send back to reducer based on type
   const {
     loan: currentLoan,
     loanPurpose: currentLoanPurpose,
     balance,
     isLoading,
-  } = useSelector((store) => store.account);
+  } = useSelector((store) => store.account); //this is how we know what reducer to use
   function handleDeposit() {
     if (!depositAmount) return;
     dispatch(deposit(depositAmount, currency));

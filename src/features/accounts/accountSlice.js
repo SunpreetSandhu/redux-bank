@@ -41,6 +41,7 @@ export default function accountReducer(state = initialStateAccount, action) {
   }
 }
 
+//1) dispatch comes here first then sent back to accountOps then sent to account slice again for reducer
 export function deposit(amount, currency) {
   if (currency === "USD") return { type: "account/deposit", payload: amount };
 
