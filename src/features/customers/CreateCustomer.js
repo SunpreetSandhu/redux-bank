@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createCustomer } from "./customerSlice";
 
 function Customer() {
@@ -11,6 +11,7 @@ function Customer() {
     if (!fullName || !nationalId) return;
     dispatch(createCustomer(fullName, nationalId));
   }
+  const createdAt = useSelector((state) => state.customer.createdAt); // Access createdAt from Redux state
 
   return (
     <div>
